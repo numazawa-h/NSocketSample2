@@ -1,0 +1,24 @@
+{
+    "local_addr":[
+    	{"desc":"サーバー", "ip":"192.168.179.2", "port":900 },
+    	{"desc":"クライアント1", "ip":"192.168.179.2", "port":901 },
+    	{"desc":"クライアント2", "ip":"192.168.179.2", "port":902 },
+    ],
+    "remote_addr":[
+    	{"desc":"サーバー", "ip":"192.168.179.2", "port":900   },
+    	{"desc":"クライアント1", "ip":"192.168.179.2", "port":901 },
+    	{"desc":"クライアント2", "ip":"192.168.179.2", "port":902 },
+    ],
+  },
+
+  // 実行するコマンドを定義する
+  "Commands":[	
+    { "id":"send-health", "cmd":"send", "data":["ヘルスチェック\n", "\n"] },
+    { "id":"send-test", "cmd":"send", "data":"file:.\config\test.txt" },
+  ],
+
+  // 各イベント発生時に実行するコマンドを定義する
+  "Scripts":[	
+    { "id":"health-check", "checked":false, "when":"timer", "start":2000, "interval":5000, "cmd":"send-health" },
+  ],
+}
